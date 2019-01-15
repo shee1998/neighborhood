@@ -19,3 +19,22 @@ def profile(request):
     prof = Occupants.objects.get(name__id=user.id)
     return render(request,'profile.html',{'user':user,'prof':prof,'businesses':businesses})
 
+def edit_profile(request):
+    user = request.user
+       
+    if request.method =='POST':
+        name= Occupants(name=request.user)
+        form = ProfileForm(request.POST,request.FILES,instance=name)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        try:
+            form= ProfileForm(instance=user)
+        except:
+            me = Occupants.objects.get(name__id=user.id) 
+        
+            form = ProfileForm(instance=me)
+            
+    return render(request,'edit_profile.html',{'form':form,'user':user})
+
