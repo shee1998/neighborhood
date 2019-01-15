@@ -66,3 +66,17 @@ def business(request):
     business= Business.objects.all().filter(neighborhood=user.neighborhood)
     return render(request,'business.html',{'business':business})
 
+def add_business(request):
+    owner = request.user
+    user = Occupants.objects.get(name=owner)
+    if request.method =='POST':
+        neighborhood= Neighborhood.objects.get(name=user.neighborhood)
+        owner= Business(owner=owner,neighborhood=neighborhood)
+        form = BusinessForm(request.POST,instance=owner)
+        if form.is_valid():
+            form.save()
+            return redirect('businesses')
+
+    else:
+        form = BusinessForm()
+    return render (request,'add_business.html',{'form':form})
