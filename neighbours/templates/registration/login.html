@@ -1,0 +1,29 @@
+{% extends 'registration/base.html'%}
+{% load bootstrap4%}
+{% block content%}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8" style="background-image:url('../../static/images/bg-tel.jpg');background-repeat: no-repeat;background-size: cover; height:650px">
+        <h1 class="text-white">Jua Jirani</h1><br>
+        <h2 class="text-white pt-5">Let's Connect</h2>
+        <!-- <a class="d-md-none mr-auto" href="#login" style="position:absolute;top:70%;background-color:black"><img src="../../static/images/arrow-down.png" alt=""height='40' width="40" ></a> -->
+      </div>
+      <div id='login' class="col-md-4 justify-center pt-5">
+        <div class="card ">
+          <div class="card-header">
+            <h2 class="text-center" >Sign In</h2>
+          </div>
+          <div class="card-body">
+            <form action="/" method="post">
+              {% csrf_token%}
+              {% bootstrap_form form%}
+              <button class="d-inline btn-outline-primary btn-sm btn" type="submit">Login</button>
+              <p class="d-inline pl-5 btn" ><a href="{% url 'signup'%} "> Sign up here</a></p>
+              <input type='hidden' value='{%url "edit_profile"%} ' name='next'>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+{% endblock%}
