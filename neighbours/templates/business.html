@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+{% block content%}
+{% if business%}
+<div class="container">
+  <h3 class="text-center">{{business|length}}  Businesses available </h3>
+    <div class="row">
+        
+        {% for business in business%}
+        <div class="col-md-4 mt-5">
+          <div class="card">
+            <div class="card-header">
+                <h3 class="texxt-center">{{business.business_name}}</h3>
+            </div>
+            <div class="card-body">
+              <p>Owned by: <span class="text-success">{{business.owner.username}}</span></p>
+              <p><span class="text-primary">Description:</span> <br>{{business.description}}</p>
+
+            </div>
+            <div class="card-footer">
+              <p>Business Email: {{business.b_email}} </p>
+            </div>
+          </div>
+  
+        </div>
+        {% endfor%}
+        <h4>Add another business <span><a href="{% url 'add_business'%} ">here</a></span></h4>
+    
+        {%else%}
+          <h3>There are no businesses yet.</h3>
+          <h4>Add a business <span><a href="{% url 'add_business'%} ">here</a></span></h4>
+        </div>
+      </div>
+      {% endif %}
+{% endblock%}
