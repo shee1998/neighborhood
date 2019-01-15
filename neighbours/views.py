@@ -13,3 +13,9 @@ def signup(request):
         form= RegistrationForm()
     return render(request,'registration/registration_form.html',{'form':form})
 
+def profile(request):
+    user = request.user
+    businesses= Business.objects.filter(owner=user)
+    prof = Occupants.objects.get(name__id=user.id)
+    return render(request,'profile.html',{'user':user,'prof':prof,'businesses':businesses})
+
