@@ -1,0 +1,36 @@
+{% extends 'registration/base.html'%}
+{% load bootstrap4%}
+{% block content%}
+<div class="container-fluid ">
+    <div class="row">
+      <div class="col-md-7" style="background-image:url('../../static/images/bg-tel.jpg');background-repeat: no-repeat;background-size: cover; height:650px">
+        <h1 class="text-white">Jua Jirani</h1><br>
+        <h2 class="text-white text-disabled" disabled>Get the indepth info about your neighborhood.
+          <ul>
+            <li>Know your neighbors.</li>
+            <li>Know your neighborhood affairs.</li>
+            <li>Know the businesses and services around you.</li>
+            <li>We keep you informed..</li>
+          </ul>
+        </h2>
+      </div>
+      <div class="col-md-5 pt-5">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="text-center">Sign Up</h2>
+          </div>
+          <div class="card-body">
+            <form class="" action="{%url 'signup'%} " method="post">
+              {% csrf_token%}
+              {% bootstrap_form form%}
+              <button  type="submit" class="btn-sm btn btn-outline-primary ">Submit</button>
+              <p class="btn-sm">Have an account? <a href="/">Continue to Login</a></p>
+              <input type="hidden" name='next' value="/">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+{% endblock%}
