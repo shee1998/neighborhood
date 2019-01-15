@@ -61,3 +61,8 @@ def neighborhood_details(request):
     # occupants=neighborhood.all
     return render(request,'details.html',{'details':details})
 
+def business(request):
+    user = Occupants.objects.get(name=request.user.id)
+    business= Business.objects.all().filter(neighborhood=user.neighborhood)
+    return render(request,'business.html',{'business':business})
+
