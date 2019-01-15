@@ -38,3 +38,19 @@ def edit_profile(request):
             
     return render(request,'edit_profile.html',{'form':form,'user':user})
 
+def create_profile(request):
+    user = request.user
+    me = Occupants.objects.get(name__id=user.id) 
+    if request.method =='POST':
+        if form.is_valid():
+            form = ProfileForm(request.POST,request.FILES)
+            form.save(commit=False)
+            form.user = user
+            form.save()
+            return redirect('profile')
+    else:                
+        form = ProfileForm(instance=me)
+        
+    return render(request,'create_profile.html',{'form':form,'user':user})
+
+
