@@ -54,3 +54,10 @@ def create_profile(request):
     return render(request,'create_profile.html',{'form':form,'user':user})
 
 
+def neighborhood_details(request):
+    user = Occupants.objects.get(name=request.user.id)
+    neighborhood= Neighborhood.objects.get(name=user.neighborhood)
+    details = Occupants.objects.filter(neighborhood__name=neighborhood)
+    # occupants=neighborhood.all
+    return render(request,'details.html',{'details':details})
+
