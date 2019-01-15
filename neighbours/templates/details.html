@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+{% block content %}
+  <div class="container">
+    <div class="row">
+    {% if details%}
+    hello
+    {% endif %}
+        {% for detail in details%}
+          <div class="col-md-4">
+              <p>{{detail.name}}</p>
+              <p>{{detail.neighborhood}} </p>
+              <p>{{detail.Admin.username}} </p>
+          </div>
+        {% endfor%}
+    </div>
+  </div>
+{% endblock %}
