@@ -7,16 +7,6 @@
 [Raphael Katana](https://github.com/RKatana)
 
 ## Description
-
-   > This application gives information and connnect neighbors in  a neighborhood.
-## Prerequisites
-
-    + Python3.6.7
-    + Django 1.11.17
-    + Virtual environment.
-
-## How to run the app
-
 1. Clone the project by running the following command:  git clone https://github.com/RKatana/neighborhood.git
 2. Install the dependencies in the requirements.txt file.
 3. Create a database and run migrations.
